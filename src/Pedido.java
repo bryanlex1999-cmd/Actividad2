@@ -14,6 +14,13 @@ public class Pedido {
 
     public void validar() {
         System.out.println("Validando pedido #" + id + "...");
+
+        if (cliente.getNombre().matches(".*\\d.*"))
+            throw new IllegalStateException("El nombre del cliente no puede contener números.");
+
+        if (montoTotal <= 0)
+            throw new IllegalStateException("El monto total debe ser mayor a cero.");
+
         this.validado = true;
         System.out.println("Pedido #" + id + " validado correctamente.");
     }
